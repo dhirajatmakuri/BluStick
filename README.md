@@ -1,106 +1,85 @@
-Real-Time Bluetooth Tracking System
+# BluStick — Real-Time Bluetooth Tracking System
 
-BluStick is a full-stack embedded system that enables real-time tracking of nearby Bluetooth devices using a custom ESP32-based hardware device, a mobile application, and a cloud backend.
+> Full-stack embedded system for real-time BLE device detection, distance estimation, and live map visualization.
 
-The system is designed to provide situational awareness by detecting Bluetooth signals, estimating distance, and visualizing movement patterns on a live map.
-
----
-
-Key Features
-
-Real-time BLE scanning using ESP32 firmware
-Mobile app (React Native) for live detection and visualization
-Map-based tracking with route reconstruction
-Secure backend with authentication and data storage
-Search Mode for tracking specific devices in real time
-High-volume data handling (50k+ detections tested)
+![ESP32](https://img.shields.io/badge/ESP32-C%2FC%2B%2B-blue?style=flat-square)
+![React Native](https://img.shields.io/badge/Mobile-React%20Native-61DAFB?style=flat-square)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?style=flat-square)
+![GCP](https://img.shields.io/badge/Cloud-GCP%20Cloud%20Run-4285F4?style=flat-square)
+![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-336791?style=flat-square)
 
 ---
 
-System Architecture
+## Overview
 
-BluStick is built as a complete hardware + software pipeline:
-
-1. ESP32 Device (Firmware)
-
-   * Scans nearby BLE devices
-   * Estimates distance using RSSI
-   * Streams data over BLE
-
-2. Mobile Application
-
-   * Connects via BLE
-   * Processes and visualizes detections
-   * Adds GPS data for mapping
-
-3. Backend (Cloud Run + PostgreSQL)
-
-   * Stores detections securely
-   * Supports multi-device coordination
-   * Handles authentication (JWT)
+BluStick is a hardware + software pipeline built to provide situational awareness by scanning nearby Bluetooth devices, estimating distance via RSSI, and visualizing movement on a live map. Built as a senior capstone project at Texas A&M University.
 
 ---
 
-Tech Stack
+## Results
 
-Hardware / Firmware
-
-* ESP32 (C / ESP-IDF)
-* BLE (GAP + GATT)
-* RSSI-based distance estimation
-
-Frontend
-
-React Native (Expo)
-Google Maps / react-native-maps
-
-Backend
-
-Node.js (Express)
-PostgreSQL (Cloud SQL)
-Google Cloud Run
+| Metric | Value |
+|---|---|
+| Battery Life | ~24 hours |
+| Detection Range | ~24 meters |
+| Distance Error | ~10% avg |
+| Detections Processed | 100,000+ |
+| BLE Stability | Stable during active movement |
 
 ---
 
-How It Works
+## System Architecture
+ESP32 Firmware  →  React Native App  →  Cloud Backend
+(BLE scan)       (map + GPS)          (store + auth)
 
-* The ESP32 continuously scans for Bluetooth signals
+### ESP32 (Firmware)
+- Continuously scans nearby BLE devices
+- Estimates distance using RSSI
+- Streams detection data over BLE (GAP + GATT)
 
-* Each detection includes:
+### Mobile App (React Native)
+- Connects to ESP32 via BLE
+- Attaches GPS coordinates to each detection
+- Visualizes movement on Google Maps (path mode, bubble mode, age-coded coloring)
+- Search Mode: target specific devices via ESP32 whitelist
 
-  * MAC address
-  * Signal strength (RSSI)
-  * Estimated distance
-
-* The mobile app:
-
-  * Receives detections via BLE
-  * Adds GPS coordinates
-  * Displays real-time movement on a map
-
-* The backend:
-
-  * Stores detection data
-  * Enables multi-device coordination
-  * Maintains secure access
+### Backend (Cloud Run + PostgreSQL)
+- JWT-authenticated REST API
+- Stores detection events with timestamps and coordinates
+- Supports multi-device coordination
 
 ---
+
+## Tech Stack
+
+**Firmware:** ESP32-WROOM, C / ESP-IDF, BLE GAP + GATT  
+**Mobile:** React Native (Expo), Google Maps, react-native-maps, react-native-ble-plx  
+**Backend:** Node.js, Express, PostgreSQL (Cloud SQL), Google Cloud Run  
+
+---
+
 ## Hardware Design
 
-The BluStick device is built around an ESP32 microcontroller and supporting power and control circuitry:
+| Component | Part |
+|---|---|
+| Microcontroller | ESP32-WROOM (BLE 4.2) |
+| Battery | 3.7V Li-Po, 10,000 mAh |
+| Charging | TP4056 (USB-C + protection) |
+| Voltage Regulation | MT3608 boost converter (3.7V → 5V) |
+| Motor Driver | L9110S H-Bridge |
+| Feedback | Vibration motor |
+| Controls | Push button + slide switch |
 
-- **Microcontroller:** ESP32-WROOM (BLE 4.2 support)
-- **Battery:** 3.7V Li-Po (10,000 mAh)
-- **Charging Module:** TP4056 (USB-C charging + protection)
-- **Voltage Regulation:** MT3608 boost converter (3.7V → 5V)
-- **Motor Driver:** L9110S H-Bridge
-- **Feedback:** Vibration motor for silent alerts
-- **Controls:** Push button (event trigger), slide switch (power
+---
 
-## 📊 Results
+## Engineering Highlights
 
-* ✅ ~24 hour battery life
-* ✅ ~10% average distance error
-* ✅ ~24 meter detection range
-* ✅ Stable BLE connection during movement
-* ✅ Successfully processed 100k+ detections
+- Implemented Douglas-Peucker path simplification for efficient route rendering
+- Resolved ESP32 mutex race conditions in BLE firmware
+- Fixed NullPointerException crash in BLE cleanup on the mobile layer
+- Haversine distance calculations for accurate GPS-based path reconstruction
+- Optimized for high-volume data: 100k+ detections tested end-to-end
+
+---
+
+*Capstone · Texas A&M University*
