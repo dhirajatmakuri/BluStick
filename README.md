@@ -85,6 +85,17 @@ How It Works
   * Maintains secure access
 
 ---
+## Hardware Design
+
+The BluStick device is built around an ESP32 microcontroller and supporting power and control circuitry:
+
+- **Microcontroller:** ESP32-WROOM (BLE 4.2 support)
+- **Battery:** 3.7V Li-Po (10,000 mAh)
+- **Charging Module:** TP4056 (USB-C charging + protection)
+- **Voltage Regulation:** MT3608 boost converter (3.7V → 5V)
+- **Motor Driver:** L9110S H-Bridge
+- **Feedback:** Vibration motor for silent alerts
+- **Controls:** Push button (event trigger), slide switch (power
 
 ## 📊 Results
 
