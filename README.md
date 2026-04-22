@@ -12,7 +12,7 @@
 
 ## Overview
 
-BluStick is a hardware + software pipeline built to provide situational awareness by scanning nearby Bluetooth devices, estimating distance via RSSI, and visualizing movement on a live map. Built as a senior capstone project at Texas A&M University.
+BluStick is a hardware + software pipeline built to provide situational awareness by scanning nearby Bluetooth devices, estimating distance via RSSI, and visualizing movement on a live map.
 
 ---
 
