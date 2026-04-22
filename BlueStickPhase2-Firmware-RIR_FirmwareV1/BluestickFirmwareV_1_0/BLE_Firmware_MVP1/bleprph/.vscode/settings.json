@@ -1,0 +1,16 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPathWin": "C:\\Users\\rlar0\\esp\\v5.5.1\\esp-idf",
+  "idf.toolsPathWin": "C:\\Users\\rlar0\\.espressif",
+  "idf.pythonInstallPath": "C:\\Users\\rlar0\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
+  "files.associations": {
+    "nimble_port.h": "c",
+    "nimble_port_freertos.h": "c",
+    "ble_hs.h": "c",
+    "bitset": "c",
+    "algorithm": "c",
+    "format": "c",
+    "time.h": "c"
+  },
+  "idf.portWin": "COM7"
+}

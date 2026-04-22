@@ -1,0 +1,4 @@
+# ESP-IDF build output
+/build/
+/bootloader/build/
+/BluestickFirmwareV_1_0/BLE_Firmware_MVP1/bleprph/build

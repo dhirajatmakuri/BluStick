@@ -1,0 +1,1 @@
+At a Tx power of about -59 to -60 dBm we get an error margin of about 1-1.5 meters from the observable testing however we can get this much further 

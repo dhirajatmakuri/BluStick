@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:IDF_PATH}/components/**",
+                "${env:IDF_PATH}/components/esp_ipc/include",
+                "${env:IDF_PATH}/components/freertos/include",
+                "${env:IDF_PATH}/components/driver/include",
+                "${env:IDF_PATH}/components/esp_common/include",
+                "${env:IDF_PATH}/components/log/include",
+                "${env:IDF_PATH}/components/lwip/include/**",
+                "${env:IDF_PATH}/components/bt/include/**",
+                "${env:IDF_PATH}/components/nimble/**",
+                "C:/Users/${env:USERNAME}/esp/v5.5.1/esp-idf/components/**"
+            ],
+            "defines": [
+                "ESP_PLATFORM",
+                "IDF_VER=\"v5.5.1\""
+            ],
+            "compilerPath": "C:/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
